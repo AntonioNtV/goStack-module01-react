@@ -19,8 +19,13 @@ function App() {
      * 2. Função para atualizarmos esse valors
      */
    
-    function handleAddProject(projectName) {
-        setProjects([...projects, `Novo Projeto ${Date.now()}`])
+    async function handleAddProject(projectName) {
+        const response = await api.post('projects', {
+            title: 'Projeto teste',
+            owner: 'Antonio Neto'
+        })
+
+        setProjects([...projects, response.data])
     }
 
     useEffect(() => {
