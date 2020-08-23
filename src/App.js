@@ -7,6 +7,8 @@ import Header from './components/Header'
  * Estado & Imutabilidade
  */
 function App() {
+    const projects = ['Desenvolvimento de app', 'Front-end web']
+
     return (
         <> 
         <Header title="Projects"/>
