@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Header from './components/Header'
+import { api } from './services/api'
 import './App.css'
 /**
  * Principais conceitos do react
@@ -8,7 +9,7 @@ import './App.css'
  * Estado & Imutabilidade
  */
 function App() {
-    const [projects, setProjects] = useState(['Desenvolvimento de app', 'Front-end web'])
+    const [projects, setProjects] = useState([])
 
 
     /**
@@ -22,12 +23,18 @@ function App() {
         setProjects([...projects, `Novo Projeto ${Date.now()}`])
     }
 
+    useEffect(() => {
+        api.get('projects').then( response => {
+            setProjects(response.data)
+        })
+    }, [])
+  
     return (
         <> 
         <Header title="Projects"/>
 
         <ul>
-            {projects.map(project => <li key={project}>{project}</li>)}
+            {projects.map(project => <li key={project.id}>{project.title}</li>)}
         </ul>
 
         <button type="button" onClick={handleAddProject}>Adicionar Projeto</button>
