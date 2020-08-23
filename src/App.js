@@ -7,11 +7,18 @@ import Header from './components/Header'
  * Estado & Imutabilidade
  */
 function App() {
-    const projects = ['Desenvolvimento de app', 'Front-end web']
+    const [projects, setProjects] = useState(['Desenvolvimento de app', 'Front-end web'])
 
+
+    /**
+     * useState retorna um array com 2 posições
+     * 
+     * 1. Variável com o seu valor inicial
+     * 2. Função para atualizarmos esse valors
+     */
+   
     function handleAddProject(projectName) {
-        projects.push(`Novo Projeto ${Date.now()}`)
-        console.log(projects);
+        setProjects([...projects, `Novo Projeto ${Date.now()}`])
     }
 
     return (
