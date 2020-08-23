@@ -12,6 +12,10 @@ function App() {
     return (
         <> 
         <Header title="Projects"/>
+
+        <ul>
+            {projects.map(project => <li key={project}>{project}</li>)}
+        </ul>
         </>
     )
 }
