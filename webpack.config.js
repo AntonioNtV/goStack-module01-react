@@ -29,6 +29,13 @@ module.exports = {
                         loader: 'css-loader'
                     }
                 ]
+            },
+            {
+                test: /.*\.(gif|png|jpg|jpe?g)$/i,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'file-loader'
+                }
             }
         ]
     }
